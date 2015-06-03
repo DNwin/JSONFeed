@@ -9,7 +9,7 @@
 #import "CoursesViewController.h"
 #import "WebViewController.h"
 
-@interface CoursesViewController ()
+@interface CoursesViewController () <NSURLSessionDataDelegate>
 
 @property (nonatomic) NSURLSession *session; // API for network requests
 @property (nonatomic, copy) NSArray *courses;
@@ -32,7 +32,9 @@
         // Pass nil to get defaults, creates a shared NSURLSession
         // Multiple instances of URL sessions can be configured differently
         // (Required header fields, no cellular access, etc)
-        _session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:nil];
+        
+        // Set the delegate if private credentials are needed
+        _session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
         
         // Fetch the data
         [self fetchFeed];
@@ -56,7 +58,9 @@
 
 - (void)fetchFeed
 {
-    NSString *requestString = @"http://bookapi.bignerdranch.com/courses.json";
+    // NSString *requestString = @"http://bookapi.bignerdranch.com/courses.json";
+    NSString *requestString = @"https://bookapi.bignerdranch.com/private/courses.json";
+    
     NSURL *url = [NSURL URLWithString:requestString];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
     
@@ -82,6 +86,16 @@
     [dataTask resume];
 }
 #pragma mark Protocols
+
+// Sent upon authentication request
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential *))completionHandler
+{
+    NSURLCredential *cred =
+    [NSURLCredential credentialWithUser:@"BigNerdRanch" password:@"AchieveNerdvana" persistence:NSURLCredentialPersistenceForSession];
+    
+    // Arg 1 - Type of credentials ( username and password ) 2nd - the credentials
+    completionHandler(NSURLSessionAuthChallengeUseCredential, cred);
+}
 
 // On selection of table view cell, show webviewcontroller with url
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
