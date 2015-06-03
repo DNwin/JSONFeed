@@ -7,11 +7,13 @@
 //
 
 #import "CoursesViewController.h"
+#import "WebViewController.h"
 
 @interface CoursesViewController ()
 
 @property (nonatomic) NSURLSession *session; // API for network requests
 @property (nonatomic, copy) NSArray *courses;
+
 @end
 
 @implementation CoursesViewController
@@ -78,6 +80,20 @@
     
     // Resume task (Start the web service request)
     [dataTask resume];
+}
+#pragma mark Protocols
+
+// On selection of table view cell, show webviewcontroller with url
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Get current course obj
+    NSDictionary *course = self.courses[indexPath.row];
+    NSURL *URL = [NSURL URLWithString:course[@"url"]];
+    // Set the title up top
+    self.webViewController.title = course[@"title"];
+    self.webViewController.URL = URL;
+    [self.navigationController pushViewController:self.webViewController animated:YES];
+    
 }
 
 #pragma mark - Table view data source

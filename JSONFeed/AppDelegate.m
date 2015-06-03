@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CoursesViewController.h"
+#import "WebViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,10 @@
     
     // Set it as root view controller
     self.window.rootViewController = masterNav;
+    
+    // Instantiate here for use with UISplitViewController
+    WebViewController *wvc = [[WebViewController alloc] init];
+    cvc.webViewController = wvc;
     
     
     
