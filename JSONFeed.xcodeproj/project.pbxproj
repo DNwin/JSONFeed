@@ -12,6 +12,7 @@
 		958D80971B1F06360097FE2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958D80961B1F06360097FE2F /* Images.xcassets */; };
 		958D809A1B1F06360097FE2F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958D80981B1F06360097FE2F /* LaunchScreen.xib */; };
 		958D80A61B1F06360097FE2F /* JSONFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 958D80A51B1F06360097FE2F /* JSONFeedTests.m */; };
+		958D80B31B1F06C80097FE2F /* CoursesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 958D80B21B1F06C80097FE2F /* CoursesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,8 @@
 		958D809F1B1F06360097FE2F /* JSONFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		958D80A41B1F06360097FE2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		958D80A51B1F06360097FE2F /* JSONFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSONFeedTests.m; sourceTree = "<group>"; };
+		958D80B11B1F06C80097FE2F /* CoursesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoursesViewController.h; sourceTree = "<group>"; };
+		958D80B21B1F06C80097FE2F /* CoursesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoursesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 				958D80941B1F06360097FE2F /* AppDelegate.m */,
 				958D80961B1F06360097FE2F /* Images.xcassets */,
 				958D80981B1F06360097FE2F /* LaunchScreen.xib */,
+				958D80B11B1F06C80097FE2F /* CoursesViewController.h */,
+				958D80B21B1F06C80097FE2F /* CoursesViewController.m */,
 				958D808F1B1F06360097FE2F /* Supporting Files */,
 			);
 			path = JSONFeed;
@@ -211,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				958D80951B1F06360097FE2F /* AppDelegate.m in Sources */,
+				958D80B31B1F06C80097FE2F /* CoursesViewController.m in Sources */,
 				958D80921B1F06360097FE2F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,6 +338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JSONFeed/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -342,6 +349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JSONFeed/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
