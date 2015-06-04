@@ -40,4 +40,25 @@
     }
 }
 
+// Split view controller delegate method, need to set bar button
+// When split view controller is in portrait mode, need to implement this method so a barbutton appears to show popover for it
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+    // It will not appear at all if there is no title.
+    barButtonItem.title = @"Courses";
+    
+    // Take the bar button item and place on left side of nav item
+    self.navigationItem.leftBarButtonItem = barButtonItem;
+}
+
+// Remove button when rotated back into landscape mode
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    // Double check that it is the correct button
+    if (barButtonItem == self.navigationItem.leftBarButtonItem)
+    {
+        self.navigationItem.leftBarButtonItem = nil;
+        
+    }
+}
 @end

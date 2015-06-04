@@ -25,13 +25,30 @@
     // Place it within a navigation controller
     UINavigationController *masterNav = [[UINavigationController alloc] initWithRootViewController:cvc];
     
-    // Set it as root view controller
-    self.window.rootViewController = masterNav;
-    
     // Instantiate here for use with UISplitViewController
     WebViewController *wvc = [[WebViewController alloc] init];
     cvc.webViewController = wvc;
     
+    
+    // Check for ipad
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+    {
+        // Setup split view controller with webviewcontroller as the detail nav/ delegate
+        
+        // Make nav controller for web view controller
+        UINavigationController *detailNav = [[UINavigationController alloc] initWithRootViewController:wvc];
+        // Make split view controller
+        UISplitViewController *svc = [[UISplitViewController alloc] init];
+        svc.delegate = wvc;
+        
+        svc.viewControllers = @[masterNav, detailNav];
+        
+        self.window.rootViewController = svc;
+    }
+    else {
+        self.window.rootViewController = masterNav;
+    }
+
     
     
     self.window.backgroundColor = [UIColor whiteColor];

@@ -106,8 +106,13 @@
     // Set the title up top
     self.webViewController.title = course[@"title"];
     self.webViewController.URL = URL;
-    [self.navigationController pushViewController:self.webViewController animated:YES];
     
+    // Check for existance of split view before pushing onto nav stack
+    
+    if (!self.splitViewController)
+    {
+        [self.navigationController pushViewController:self.webViewController animated:YES];
+    }
 }
 
 #pragma mark - Table view data source
